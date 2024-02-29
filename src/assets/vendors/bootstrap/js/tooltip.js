@@ -23,8 +23,8 @@
  * SOFTWARE.
  */
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('public/assets/vendors/bootstrap/js/popper.js')) :
-	typeof define === 'function' && define.amd ? define(['public/assets/vendors/bootstrap/js/popper.js'], factory) :
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('src/assets/vendors/bootstrap/js/popper.js')) :
+	typeof define === 'function' && define.amd ? define(['src/assets/vendors/bootstrap/js/popper.js'], factory) :
 	(global.Tooltip = factory(global.Popper));
 }(this, (function (Popper) { 'use strict';
 
