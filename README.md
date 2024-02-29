@@ -36,9 +36,21 @@ How to deploy the application outside the dev environment.
 
 ## Directory structure
 
-* Tip: try the tree bash command
-
-//TODO
+```bash=
+├───app
+│   ├───components
+│   ├───models
+│   └───pages
+│       ├───home //contains the home page, css nad js for the login page and the controller
+│       └───login //contains the login page, css nad js for the login page and the controller
+└───assets
+    ├───css
+    ├───fonts
+    ├───imgs
+    ├───js
+    ├───scss
+    └───vendors
+```
 
 ## Collaborate
 
