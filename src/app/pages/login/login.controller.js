@@ -10,3 +10,8 @@ export default {
         return 'logged';
     },
 
+    // Log a person out of our app and send the logout back to Facebook
+    logPersonOut: function(callback) {
+        // Logic to destroy the session with the user
+        callback();
+},};

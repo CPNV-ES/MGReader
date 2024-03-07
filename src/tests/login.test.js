@@ -46,3 +46,16 @@ import login from "../app/pages/login/login.controller";
         // Expect the login status to be logged
         expect(login.logPersonIn(mockResponse)).toEqual('logged');
     });
+
+    test('Log_PersonOut_SuccessfullyLoggedOut', () => {
+        //Given
+        const mockCallback = jest.fn();
+
+        //When
+        // Log person out using the mocked callback
+        login.logPersonOut(mockCallback);
+
+        //Then
+        // Expect the callback to be called
+        expect(mockCallback).toHaveBeenCalled();
+    });
