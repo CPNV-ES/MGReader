@@ -14,9 +14,9 @@ List all dependencies and their version needed by the project as :
 
 * DataBase Engine MySql
 * IDE used IntelliJ
+* plantUML plugin
 * Package manager Composer and npm
 * OS supported Windows
-* Virtualization (Docker, .Net, .JDK, .JRE)
 
 ### Configuration
 
@@ -27,8 +27,13 @@ How do you set the sensitive data?
 
 ### On dev environment
 
-How to get dependencies and build?
-How to run the tests?
+```bash=
+# Install node modules
+npm install
+
+#Run all tests
+jest tests
+```
 
 ### On integration environment
 
@@ -36,9 +41,21 @@ How to deploy the application outside the dev environment.
 
 ## Directory structure
 
-* Tip: try the tree bash command
-
-//TODO
+```bash=
+├───app
+│   ├───components
+│   ├───models
+│   └───pages
+│       ├───home //contains the home page, css nad js for the login page and the controller
+│       └───login //contains the login page, css nad js for the login page and the controller
+└───assets
+    ├───css
+    ├───fonts
+    ├───imgs
+    ├───js
+    ├───scss
+    └───vendors
+```
 
 ## Collaborate
 
