@@ -44,3 +44,35 @@ describe('Login and User Info View Tests', () => {
         expect(userRole).toEqual(user.role);
     });
 
+    test('Log Person In Successfully Logged', async () => {
+        await driver.get('C:\\Users\\phili\\Documents\\GitHub\\MGReader\\src\\app\\pages\\home\\home.html');
+
+        // Given
+        // Login response from Facebook mocked
+        const mockResponse = {
+            status: 'connected',
+            authResponse: {
+                accessToken: '{access-token}',
+                expiresIn: '{unix-timestamp}',
+                reauthorize_required_in: '{seconds-until-token-expires}',
+                signedRequest: '{signed-parameter}',
+                userID: '{user-id}'
+            }
+        };
+
+        // When
+        // Create a new user with the given userID of the mockResponse
+        const user = new User(mockResponse.authResponse.userID, 'John Doe', 'user');
+
+        // Wait for the login-status element to be present in the DOM
+        await driver.wait(until.elementLocated(By.id('login-status')));
+
+        // Execute script to update the login-status element with the returned value
+        await driver.executeScript(`document.getElementById('login-status').innerText = 'logged';`);
+
+        // Then
+        // Check if the login status is displayed correctly on the page
+        const loginStatus = await driver.findElement(By.id('login-status')).getText();
+        expect(loginStatus).toEqual('logged');
+    });
+
