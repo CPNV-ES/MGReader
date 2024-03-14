@@ -4,4 +4,16 @@ export default class User {
         this.name = name;
         this.role = role;
     }
+
+    getID() {
+        return this.id;
+    }
+
+    getName() {
+        return this.name;
+    }
+
+    getRole() {
+        return this.role;
+    }
 }

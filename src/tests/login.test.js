@@ -20,16 +20,13 @@ import User from "../app/models/user";
         // Create a new user with the given role
         const user = new User(mockResponse.authResponse.userID, 'John Doe', 'user');
 
-        // Mock the getUserRole function
-        home.getUserRole = jest.fn().mockReturnValue(user.role);
-
         // When
         // Log person in using the mocked response
         login.logPersonIn(mockResponse);
 
         // Then
         // Expect the user role to be returned
-        expect(home.getUserRole(user.role)).toEqual('user');
+        expect(user.getRole()).toEqual('user');
     });
 
     test('Log_PersonIn_SuccessfullyLogged', () => {

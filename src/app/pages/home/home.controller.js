@@ -1,6 +1,2 @@
-export default {
-
-    getUserRole(role) {
-        return role;
-    }
+export default class HomeController{
 }
