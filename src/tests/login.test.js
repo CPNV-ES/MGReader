@@ -1,9 +1,12 @@
 import expect from "expect";
 import login from "../app/pages/login/login.controller";
+import home from "../app/pages/home/home.controller";
+import User from "../app/models/user";
 
-    test('Check_LoginStatus_SuccessfullyConnected', () => {
-        //Given
-        // Login response from Facebook mocked
+    // Test different way to login (models,ux)
+    test('Check_ViewUserInfo_Role', () => {
+        // Given
+        // Login response from Facebook
         const mockResponse = {
             status: 'connected',
             authResponse: {
@@ -14,14 +17,19 @@ import login from "../app/pages/login/login.controller";
                 userID: '{user-id}'
             }
         };
-        //When
-        // Check login status using the mocked response
-        jest.spyOn(login, 'checkLoginStatus').mockReturnValue('connected');
+        // Create a new user with the given role
+        const user = new User(mockResponse.authResponse.userID, 'John Doe', 'user');
 
-        //Then
-        // Expect the login status to be connected
-        expect(login.checkLoginStatus(mockResponse)).toEqual('connected');
+        // Mock the getUserRole function
+        home.getUserRole = jest.fn().mockReturnValue(user.role);
 
+        // When
+        // Log person in using the mocked response
+        login.logPersonIn(mockResponse);
+
+        // Then
+        // Expect the user role to be returned
+        expect(home.getUserRole(user.role)).toEqual('user');
     });
 
     test('Log_PersonIn_SuccessfullyLogged', () => {
