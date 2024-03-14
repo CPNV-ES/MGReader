@@ -76,3 +76,23 @@ describe('Login and User Info View Tests', () => {
         expect(loginStatus).toEqual('logged');
     });
 
+    test('Log Person Out Successfully Logged Out', async () => {
+        await driver.get('C:\\Users\\phili\\Documents\\GitHub\\MGReader\\src\\app\\pages\\home\\home.html');
+
+        // Given
+        // Mock the callback function
+        const mockCallback = jest.fn();
+
+        // When
+        // Wait for the logout-button element to be present in the DOM
+        await driver.wait(until.elementLocated(By.id('logout-button')));
+
+        // Execute script to click the logout-button element
+        await driver.executeScript(`document.getElementById('logout-button').click();`);
+
+        // Then
+        // Check if the user role is null after logging out
+        const userRole = await driver.findElement(By.id('user-role')).getText();
+        expect(userRole).toEqual('');
+    });
+});
