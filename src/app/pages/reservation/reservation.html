@@ -2,19 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Reservation</title>
     <link rel="stylesheet" href="../../../assets/vendors/themify-icons/css/themify-icons.css">
     <link rel="stylesheet" href="../../../assets/css/pigga.css">
     <link rel="stylesheet" href="custom.css">
 </head>
 <body>
 <!-- Header : start -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark rounded shadow mb-3">
+    <div class="container">
+        <a class="navbar-brand" href="#">MG Reader</a>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#service">Our Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#login">login</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-primary circle"><i class="ti-shopping-cart"></i></button>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
 <!-- Header : end -->
 
 <!-- Main : start -->
+<div class="container">
+    <h3 class="mt-3">Reservations</h3>
+    <hr>
+    <div class="row">
+        <form class="col-md-6 mx-auto" action="">
+            <div class="form-group">
+                <label for="firstname">Firstname</label>
+                <input type="text" class="form-control" id="firstname" placeholder="Enter your firstname">
+            </div>
+            <div class="form-group">
+                <label for="lastname">Lastname</label>
+                <input type="text" class="form-control" id="lastname" placeholder="Enter your lastname">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone" placeholder="Enter your phone">
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" class="form-control" id="date">
+            </div>
+            <button type="submit"  class="btn btn-primary">Confirm</button>
+        </form>
+    </div>
+</div>
+
 <!-- Main : end -->
 
 <!-- Footer : start -->
+<div class="footer-sticky bg-dark text-light text-center border-top wow fadeIn">
+    <p class="mb-0 py-3 text-muted small">&copy; Copyright <script>document.write(new Date().getFullYear())</script> Made with <i class="ti-heart text-danger"></i> By <a href="http://devcrud.com">DevCRUD</a></p>
+</div>
 <!-- Footer : end -->
 
 <!-- JS : start -->
