@@ -1,24 +1,43 @@
-import expect from "expect";
-import {LocalizationService} from "../app/services/localization.service";
+const { Builder, By, until } = require('selenium-webdriver');
+const i18next = require('i18next');
 
+describe('Header translation', function() {
+    let driver;
 
+    beforeAll(async () => {
+        driver = await new Builder().forBrowser('firefox').build();
+        await driver.get('file://C:/SchoolPJS/MGReader/src/app/pages/home/home.html');
 
-describe('Multilingual Management', () => {
-    let LS = new LocalizationService();
-
-    it('should show greetings in French when language is set to French', () => {
-        LS.setLanguage('fr');
-        expect(LS.translate('Hello')).toBe('Bonjour');
+        await i18next.init({
+            lng: 'en',
+            resources: {
+                en: { translation: { 'About-us': 'About us', 'Our-service': 'Our service', 'login': 'Login' } },
+                fr: { translation: { 'About-us': 'À propos de nous', 'Our-service': 'Notre service', 'login': 'S\'identifier' } },
+                // Add other languages here...
+            },
+        });
     });
 
-    it('should show greetings in English when language is set to English', () => {
-        LS.setLanguage('en');
-        expect(LS.translate('Hello')).toBe('Hello');
+    afterAll(async () => {
+        await driver.quit();
     });
 
-    it('should show greetings in German when language is set to German', () => {
-        LS.setLanguage('de');
-        expect(LS.translate('Hello')).toBe('Hallo');
+    test('should translate header text to French', async () => {
+        await i18next.changeLanguage('fr');
+
+        const aboutUsElement = await driver.wait(until.elementLocated(By.id('About-us')), 5000);
+        const aboutUsText = await aboutUsElement.getText();
+
+        const ourServiceElement = await driver.wait(until.elementLocated(By.id('Our-service')), 5000);
+        const ourServiceText = await ourServiceElement.getText();
+
+        const loginElement = await driver.wait(until.elementLocated(By.id('login')), 5000);
+        const loginText = await loginElement.getText();
+
+        expect(aboutUsText).toBe('À propos de nous');
+        expect(ourServiceText).toBe('Notre service');
+        expect(loginText).toBe('S\'identifier');
     });
+
+    // Repeat the test for other languages...
 });
-
