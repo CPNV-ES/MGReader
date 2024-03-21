@@ -66,5 +66,22 @@ describe('Header translation', function() {
         expect(ourServiceText).toBe('Unser Service');
         expect(loginText).toBe('Anmelden');
     });
+
+    test('shouldn\'t mess up the data in the form', async () => {
+
+        await driver.executeScript("document.getElementById('language-switcher').value = 'fr';");
+        await driver.executeScript("changeLanguage('fr');");
     
+
+        const emailElement = await driver.wait(until.elementLocated(By.id('email')), 5000);
+        await emailElement.sendKeys('test@example.com');
+
+        await driver.executeScript("document.getElementById('language-switcher').value = 'en';");
+        await driver.executeScript("changeLanguage('en');");
+    
+
+        const emailValue = await emailElement.getAttribute('value');
+        expect(emailValue).toBe('test@example.com');
+    });
+        
 });

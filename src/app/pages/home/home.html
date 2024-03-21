@@ -329,9 +329,14 @@
 <!-- Main : end -->
 
 <!-- Footer : start -->
-    <div class="bg-dark text-light text-center border-top wow fadeIn">
-        <p class="mb-0 py-3 text-muted small">&copy; Copyright <script>document.write(new Date().getFullYear())</script> Made with <i class="ti-heart text-danger"></i> By <a href="http://devcrud.com">DevCRUD</a></p>
-    </div>
+<div class="bg-dark text-light text-center border-top wow fadeIn">
+    <p class="mb-0 py-3 text-muted small">&copy; Copyright <script>document.write(new Date().getFullYear())</script> Made with <i class="ti-heart text-danger"></i> By <a href="http://devcrud.com">DevCRUD</a></p>
+    <select id="language-switcher" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+    </select>
+</div>
 <!-- Footer : end -->
 
 <!-- JS : start -->
