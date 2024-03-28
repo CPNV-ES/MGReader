@@ -1,17 +1,19 @@
-export default {
-    // Return the status of the mockResponse
-    checkLoginStatus: function(User) {
-        return User.status;
-    },
+import LoginService from '../../services/login.service';
 
-    // Log a person into our app after Facebook has authenticated him
-    logPersonIn: function(User) {
-        // Logic to create a session with the user
-        return 'logged';
-    },
+class LoginController {
+    loginService;
 
-    // Log a person out of our app and send the logout back to Facebook
-    logPersonOut: function(callback) {
-        // Logic to destroy the session with the user
-        callback();
-},};
+    constructor() {
+        this.loginService = new LoginService();
+    }
+
+    logPersonIn(){
+        this.loginService.login();
+    }
+
+    logPersonOut(){
+        this.loginService.logout();
+    }
+}
+
+module.exports = LoginController;
