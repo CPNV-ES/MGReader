@@ -1,0 +1,53 @@
+@startuml
+
+namespace MGReaderBack {
+    class User {
+        -authId: string
+        -facebookStatus: string
+        +setStatus(authServiceResponse)
+        +setAuthId(authServiceResponse)
+    }
+
+    class MetaService {
+        +login()
+        +logout()
+    }
+
+    class LocalizationService {
+            -I18N: translator
+            +init()
+            +translateCurrentPage()
+    }
+
+    class LoginService {
+        +LoginService(mts : MetaSDK)
+        +init()
+        +login()
+        +logout()
+    }
+
+     LoginService ..> User
+     LoginService o-- MetaService
+
+}
+
+namespace MGReaderFront{
+
+    class Home {
+    }
+
+    class Reservations {
+    }
+
+    class Login {
+        -loginService: LoginService
+        +logPersonIn()
+        +logPersonOut()
+    }
+
+    Login ..> LoginService
+}
+
+MGReaderFront ..> MGReaderBack.LocalizationService
+
+@enduml
