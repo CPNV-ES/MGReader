@@ -1,19 +1,16 @@
-export default class User {
-    constructor(id, name, role) {
-        this.id = id;
-        this.name = name;
-        this.role = role;
+class User {
+    status;
+    authId;
+
+    constructor() {
+        this.status = "offline";
+    }
+    setStatus(authServiceResponse) {
+        this.status = authServiceResponse.status;
     }
 
-    getID() {
-        return this.id;
-    }
-
-    getName() {
-        return this.name;
-    }
-
-    getRole() {
-        return this.role;
+    setAuthId(authServiceResponse) {
+        this.authId = authServiceResponse.authResponse.userID;
     }
 }
+module.exports = User;
