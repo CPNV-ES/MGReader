@@ -1,40 +1,53 @@
 @startuml
 
-namespace MGReader {
+namespace MGReaderBack {
     class User {
-        -id: int
-        +name: string
-        +facebookStatus: string
-
-        +login(fbs : FacebookSDK)
-        +logout(fbs : FacebookSDK)
+        -authId: string
+        -facebookStatus: string
+        +setStatus(authServiceResponse)
+        +setAuthId(authServiceResponse)
     }
 
-    class FacebookSDK {
+    class MetaService {
         +login()
         +logout()
     }
 
-    class Manga {
-        -id: int
-        +name: string
-        +author: string
-        +cover: image
-        +AddToCart(mangas: Manga[])
-        +RemoveToCart()
+    class LocalizationService {
+            -I18N: translator
+            +init()
+            +translateCurrentPage()
     }
 
-    class Cart {
-        -id: int
-        +user: User
-        +mangas: Manga[]
-        +dates: date
-        +Finalize()
-        +ResetCart()
+    class LoginService {
+        +LoginService(mts : MetaSDK)
+        +init()
+        +login()
+        +logout()
     }
 
-    User o-- FacebookSDK
-    Cart --|> Manga
+     LoginService ..> User
+     LoginService o-- MetaService
 
 }
+
+namespace MGReaderFront{
+
+    class Home {
+    }
+
+    class Reservations {
+    }
+
+    class Login {
+        -loginService: LoginService
+        +logPersonIn()
+        +logPersonOut()
+    }
+
+    Login ..> LoginService
+}
+
+MGReaderFront ..> MGReaderBack.LocalizationService
+
 @enduml
