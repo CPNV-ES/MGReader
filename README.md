@@ -1,4 +1,4 @@
-# MASTER-README 
+# README
 
 Manga reader based on the concept of a rich internet application.
 
@@ -22,7 +22,7 @@ List all dependencies and their version needed by the project as :
 
 ### On dev environment
 
-```bash=
+```bash
 # Install node modules
 npm install
 
@@ -30,13 +30,9 @@ npm install
 jest tests
 ```
 
-### On integration environment
-
-How to deploy the application outside the dev environment.
-
 ## Directory structure
 
-```bash=
+```text
 ├───app
 │   ├───components
 │   ├───models
@@ -54,10 +50,18 @@ How to deploy the application outside the dev environment.
 
 ## Collaborate
 
-* Take time to read some readme and find the way you would like to help other developers collaborate with you.
+Branch naming convention
+ 
+Add a `feature/feature-name`
 
 example of a commit 
 `feat : added new class`
+`fix : fixed the bug in the login page`
+`refactor : refactored the login page`
+`docs : added a new readme file`
+`test : added a new test for the login page`
+
+Documentation is written in markdown and is available in the `docs` folder
 
 ## License
 
@@ -68,4 +72,4 @@ Read our Wiki for more details
 
 ## Contact on Discord
 
-MinusTheZ or lezderich
+MinusTheZ or LeZderich
