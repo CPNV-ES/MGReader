@@ -1,68 +1,62 @@
-import {i18n, init, changeLanguage } from 'i18next';
+import i18next from '../../../node_modules/i18next/dist/esm/i18next.js';
 
 
-export class LocalizationService {
-    constructor() {
-        this.language = 'en';
-        this.changeLanguage = this.changeLanguage.bind(this);
-        this.init = this.init.bind(this);
-        this.translate = this.translate.bind(this);
+i18next.init({
+    lng: 'en',
+    resources: {
+        en: {
+            translation: {
+                "about us": "About Us",
+                "login": "Login",
+                "our services": "Our Services",
+                "japanese Mangas": "Japanese Mangas",
+                "chinese manhuas": "Chinese Manhuas",
+                "korean manhwas": "Korean Manhwas",
+                "reserve": "Reserve",
+                "featured mangas": "Featured Mangas",
+            }
+        },
+        fr: {
+            translation: {
+                "about us": "À propos de nous",
+                "login": "S'identifier",
+                "our services": "Nos services",
+                "japanese Mangas": "Mangas Japonais",
+                "chinese manhuas": "Manhuas Chinois",
+                "korean manhwas": "Manhwas Coréens",
+                "reserve": "Réserver",
+                "featured mangas": "Mangas en vedette",
+            }
+        },
+        de: {
+            translation: {
+                "about us": "Über uns",
+                "login": "Anmeldung",
+                "our services": "Unsere Dienstleistungen",
+                "japanese Mangas": "Japanische Mangas",
+                "chinese manhuas": "Chinesische Manhuas",
+                "korean manhwas": "Koreanische Manhwas",
+                "reserve": "Reservieren",
+                "featured mangas": "Vorgestellte Mangas",
+            }
+        }
     }
+});
 
-    changeLanguage(language) {
-        this.language = language;
-        changeLanguage(language).then(r => {
-            console.log('Language changed to ' + language);
-        });
-    }
-
-
-
-  init() {
-      init({
-          lng: this.language,
-          resources: {
-              en: {
-                  translation: {
-                      "about us": "About Us",
-                      "login": "Login",
-                      "our services": "Our Services",
-                      "japanese Mangas": "Japanese Mangas",
-                      "chinese manhuas": "Chinese Manhuas",
-                      "korean manhwas": "Korean Manhwas",
-                      "reserve": "Reserve",
-                      "featured mangas": "Featured Mangas",
-                  }
-                  },
-              fr: {
-                  translation: {
-                      "about us": "À propos de nous",
-                      "login": "S'identifier",
-                      "our services": "Nos services",
-                      "japanese Mangas": "Mangas Japonais",
-                      "chinese manhuas": "Manhuas Chinois",
-                      "korean manhwas": "Manhwas Coréens",
-                      "reserve": "Réserver",
-                      "featured mangas": "Mangas en vedette",
-                  }
-                  },
-              de: {
-                  translation: {
-                      "about us": "Über uns",
-                      "login": "Anmeldung",
-                      "our services": "Unsere Dienstleistungen",
-                      "japanese Mangas": "Japanische Mangas",
-                      "chinese manhuas": "Chinesische Manhuas",
-                      "korean manhwas": "Koreanische Manhwas",
-                      "reserve": "Reservieren",
-                      "featured mangas": "Vorgestellte Mangas",
-                  }
-              }
-          }
-      });
-    }
-
-    translate(key) {
-        return i18n.t(key);
-    }
+function translateCurrentPage() {
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        element.innerHTML = i18next.t(key);
+    });
 }
+
+document.getElementById('language-switcher').addEventListener('change', function () {
+    console.log('Language switcher changed');
+    const selectedLanguage = this.value;
+    i18next.changeLanguage(selectedLanguage, () => {
+        translateCurrentPage();
+    });
+});
+
+
+translateCurrentPage();
