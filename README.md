@@ -18,11 +18,6 @@ List all dependencies and their version needed by the project as :
 * Package manager Composer and npm
 * OS supported Windows
 
-### Configuration
-
-How to set up the database?
-How do you set the sensitive data?
-
 ## Deployment
 
 ### On dev environment
@@ -61,14 +56,15 @@ How to deploy the application outside the dev environment.
 
 * Take time to read some readme and find the way you would like to help other developers collaborate with you.
 
-* They need to know:
-  * How to propose a new feature (issue, pull request)
-  * [How to commit](https://www.conventionalcommits.org/en/v1.0.0/)
-  * [How to use your workflow](https://nvie.com/posts/a-successful-git-branching-model/)
+example of a commit 
+`feat : added new class`
 
 ## License
 
 The Unlisence
+
+## FOR MORE
+Read our Wiki for more details
 
 ## Contact on Discord
 
